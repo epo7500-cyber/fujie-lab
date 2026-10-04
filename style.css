@@ -282,3 +282,51 @@ footer {
 .seminars .venue-n { display: block; font-size: 0.84rem; color: var(--muted); }
 .seminars li { grid-template-columns: 6.2em 7.2em 1fr; }
 @media (max-width: 760px) { .seminars li { grid-template-columns: auto 1fr; } }
+
+.h-note { font-size: 0.8rem; font-weight: 400; color: var(--muted); margin-left: 6px; }
+.h1-sub { font-size: 0.5em; font-weight: 500; letter-spacing: 0.04em; margin-left: 0.3em; white-space: nowrap; opacity: 0.92; }
+@media (max-width: 760px) { .h1-sub { display: block; margin-left: 0; font-size: 0.55em; } }
+.logo-sub { font-size: 0.72em; font-weight: 500; margin-left: 0.2em; }
+
+/* ---------- opening intro (original design) ---------- */
+html.intro-lock, html.intro-lock body { overflow: hidden; }
+#intro {
+  position: fixed; inset: 0; z-index: 100; cursor: pointer;
+  display: flex; align-items: center; justify-content: center;
+  background: linear-gradient(135deg, var(--hero-from), var(--hero-to));
+  color: #fff; transition: opacity .8s ease, transform .8s ease;
+}
+#intro[hidden] { display: none; }
+#intro.intro-out { opacity: 0; transform: translateY(-3%); pointer-events: none; }
+.intro-line {
+  position: absolute; left: 0; top: 74%; width: 100%; height: 120px; transform: translateY(-50%);
+  opacity: 0.35;
+}
+.intro-line path {
+  fill: none; stroke: #fff; stroke-width: 2; vector-effect: non-scaling-stroke;
+  stroke-dasharray: 3000; stroke-dashoffset: 3000; animation: intro-draw 2.6s ease-out forwards;
+}
+.intro-msg { position: relative; padding: 0 24px; max-width: 640px; }
+.intro-msg p {
+  margin: 0 0 10px; font-size: clamp(1.05rem, 3.6vw, 1.6rem); letter-spacing: 0.14em; line-height: 1.8;
+  opacity: 0; transform: translateY(12px); animation: intro-fade .9s ease forwards;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.18);
+}
+.intro-msg p:nth-child(1) { animation-delay: .4s; }
+.intro-msg p:nth-child(2) { animation-delay: 1.1s; }
+.intro-msg p:nth-child(3) { animation-delay: 1.8s; }
+.intro-msg .intro-name {
+  margin-top: 28px; font-size: clamp(1rem, 3vw, 1.2rem); font-weight: 700; letter-spacing: 0.2em;
+  animation-delay: 2.7s;
+}
+.intro-name span {
+  display: block; font-family: var(--en); font-size: 0.7em; font-weight: 600; letter-spacing: 0.3em;
+  text-transform: uppercase; opacity: 0.8;
+}
+.intro-skip {
+  position: absolute; right: 16px; bottom: 16px; background: transparent; color: #fff; cursor: pointer;
+  border: 1px solid rgba(255,255,255,0.6); border-radius: 999px; padding: 6px 16px; font: inherit; font-size: 0.8rem;
+}
+.intro-skip:hover { background: rgba(255,255,255,0.15); }
+@keyframes intro-draw { to { stroke-dashoffset: 0; } }
+@keyframes intro-fade { to { opacity: 1; transform: none; } }
